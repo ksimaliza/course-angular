@@ -1,0 +1,14 @@
+<main class="main">
+  <div class="content">
+    <div style="padding: 20px;">
+      <output>Tarea:</output>
+      <input [(ngModel)]="descripcion" placeholder="Ingresa una Tarea" />
+      <button (click)="addTask()">Agregar</button>      
+      @for (task of tasks; track task.id) {
+      <p> {{ task.descripcion }} <button (click)="removeTask(task.id)">Completado</button></p>
+      }
+    </div>
+  </div>
+</main>
+
+<router-outlet />
