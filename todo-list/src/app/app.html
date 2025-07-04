@@ -1,37 +1,15 @@
 <main class="main">
   <div class="container my-4">
-  <h2 class="text-center mb-4">Todo List</h2>
+    <h2 class="text-center mb-4">Todo List</h2>
 
-  <div class="input-group mb-3">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Escribe una tarea"
-      [(ngModel)]="descripcion"
-      aria-label="Nueva tarea"
-    />
-    <button class="btn btn-primary" (click)="addTask()">Agregar</button>
+
+
+    <app-task-input (add)="addTask($event)"></app-task-input>
+
+    <app-task-list [tasks]="tasks" (remove)="removeTask($event)"></app-task-list>
+
+    
   </div>
-
-  <table class="table table-striped table-hover bg-info text-white">
-    <thead>
-      <tr>
-        <th>Descripción</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-   <tbody>
-          @for (task of tasks; track task.id) {
-          <tr>
-            <td>{{ task.descripcion }}</td>
-            <td>
-              <button class="btn btn-danger btn-sm" (click)="removeTask(task.id)">Completado</button>
-            </td>
-          </tr>
-          }
-        </tbody>
-  </table>
-</div>
 
 </main>
 

@@ -1,34 +1,35 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { TaskInput } from './task-input/task-input';
+import { TaskList } from './task-list/task-list';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 
-type Task = {
+export  type Task = {
   id: number;
   descripcion: string;
 };
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FormsModule],
+  imports: [RouterOutlet,CommonModule, TaskInput, TaskList, FormsModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   protected title = 'todo-list';
-
-  descripcion: string = '';
   tasks: Task[] = [];
   nextId: number = 1;
 
-  addTask(): void {
-    if (this.descripcion.trim()) {
+  addTask(descripcion: string): void {
+    if (descripcion.trim()) {
       const newTask: Task = {
         id: this.nextId++,
-        descripcion: this.descripcion.trim()
+        descripcion: descripcion.trim()
       };
       this.tasks.push(newTask);
-      this.descripcion = '';
+      descripcion = '';
     }
   }
 
