@@ -1,8 +1,6 @@
 <p>task-list works!</p>
 <ul>
-  <app-task-item
-    *ngFor="let task of tasks"
-    [task]="task"
-    (remove)="remove.emit($event)">
-  </app-task-item>
+  @for (task of tasks; track task){
+  <app-task-item [task]="task" (remove)="remove.emit($event)"></app-task-item>
+  }
 </ul>
